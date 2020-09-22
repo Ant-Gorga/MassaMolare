@@ -141,6 +141,10 @@ elementi.append(Elemento(116,"Livermorio","Lv",292))
 elementi.append(Elemento(117,"Tennesso","Ts",294))
 elementi.append(Elemento(118,"Oganesson","Og",294))
 
+def printhelp():
+    print("\nMassaMolare.py calcola la massa molare di un composto passato come argomento")
+    print("Esempio: python MassaMolare.py NaCl")
+    print("Attenzione, i doppi apici sono obbligatori se vi sono delle parentesi nella formula\n")
 
 def findcomposti(formula):
     lastparstart=0
@@ -201,7 +205,7 @@ def findcomposti(formula):
                 x=psnumero-1
             else:
                 x=psnumero
-        
+
 
 def addelement(elem):
     trovato = False
@@ -213,7 +217,7 @@ def addelement(elem):
             trovato = True
             postrovato=i
         i+=1
-    
+
     if trovato == False:
         for tmpel in elementi:
             if tmpel.sym==elem:
@@ -248,14 +252,13 @@ def MassaMolare(formula):
 
 if __name__ == "__main__":
     try:
-        print(MassaMolare(sys.argv[1]))
         if sys.argv[1] == "-h":
-            print("\nMassaMolare.py calcola la massa molare di un composto passato come argomento")
-            print("Esempio: python MassaMolare.py NaCl")
-            print("Attenzione, i doppi apici sono obbligatori se vi sono delle parentesi nella formula\n")
+            printhelp()
+        else:
+            ris = MassaMolare(sys.argv[1])
+            if ris != ValueError:
+                print("La Massa Molare di " + sys.argv[1] + " é:"+ str(ris))
+            else:
+                print("Ricontrolla la formula!")
     except IndexError:
-        print("\nMassaMolare.py calcola la massa molare di un composto passato come argomento")
-        print("Esempio: python MassaMolare.py NaCl")
-        print("Attenzione, i doppi apici sono obbligatori se vi sono delle parentesi nella formula\n")
-
-    
+        printhelp()

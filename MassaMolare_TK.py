@@ -11,7 +11,7 @@ def btncliccato():
         str_risposta.set("Controlla la formula")
 
     risultato_box.grid(row=3,column=0)
-    
+
 
 windows = tk.Tk()
 input_box = tk.Entry(windows)
